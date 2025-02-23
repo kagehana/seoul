@@ -625,5 +625,5 @@ local layout5                     = Instance.new('UIListLayout')
 
 
 
--- templates
-return ui, folder, divider, button, query, slider, toggle, dropdown
+-- types
+return seoul, folder, divider, button, query, slider, toggle, dropdown
