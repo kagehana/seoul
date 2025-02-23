@@ -125,6 +125,7 @@ local folders                        = Instance.new('ScrollingFrame')
       folders.ScrollBarImageColor3   = Color3.new(0, 0, 0)
       folders.ScrollBarThickness     = 2
       folders.Parent                 = content
+      folders.AutomaticCanvasSize    = Enum.AutomaticSize.Y
 
 local folder                        = Instance.new('Frame')
       folder.Name                   = 'folder'
