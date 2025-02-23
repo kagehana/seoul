@@ -1,10 +1,10 @@
 -- bootleg require
-local rawgit = 'https://raw.githubusercontent.com'
+local rawgit = 'https://github.com'
 local repo   = 'kagehana/seoul'
-local branch = 'refs/heads/main/bin'
+local branch = 'blob/main/bin'
 
 local function get(fname)
-    return loadstring(game:HttpGet(('%s/%s/%s/%s.lua'):format(rawgit, repo, branch, fname)))()
+    return loadstring(game:HttpGet(('%s/%s/%s/%s.lua?raw=true'):format(rawgit, repo, branch, fname), true))()
 end
 
 
@@ -12,6 +12,7 @@ end
 local tween   = game:GetService('TweenService')
 local players = game:GetService('Players')
 local uinput  = game:GetService('UserInputService')
+
 
 -- shortcuts
 local insert = table.insert
@@ -23,7 +24,7 @@ local class = get('class')
 
 
 -- classes
-local library  = class('library')
+local seoul  =   class('seoul')
 local manager  = class('manager')
 local window   = class('window')
 local folder   = class('folder')
@@ -56,7 +57,6 @@ end
 
 local function _drag(target, ...)
     local go     = nil
-    local speed  = 0.25
     local start  = nil
     local pos    = nil
 
@@ -66,7 +66,7 @@ local function _drag(target, ...)
             pos.X.Scale, pos.X.Offset + delta.X,
             pos.Y.Scale, pos.Y.Offset + delta.Y)
 
-        tween:Create(target, TweenInfo.new(speed), {Position = position}):Play()
+        tween:Create(target, TweenInfo.new(0.25), {Position = position}):Play()
     end
 
     for k, v in ipairs({...}) do
@@ -97,24 +97,50 @@ end
 -- windows
 local client = players.LocalPlayer
 local mouse  = client:GetMouse()
+local twinfo = TweenInfo.new(0.1)
+local ddel   = uidropdown.elements.element:Clone()
 local core
 
+uidropdown.elements.element:Destroy()
+
 function window:__new(trademark)
-    local win = ui:Clone()
+    local sgui = ui:Clone()
+    local win  = sgui.ui
 
     if protect_gui then
         protect_gui(win)
     end
 
-    win.topbar.trademark.Text = tostring(trademark) or 'Seoul'
+    sgui.Parent               = client:WaitForChild('PlayerGui')
+    win.topbar.trademark.Text = trademark and tostring(trademark) or 'Seoul'
+
+    win.topbar.minimize.MouseButton1Click:Connect(function()
+        self:__resize()
+    end)
+
+    win.topbar.escape.MouseButton1Click:Connect(function()
+        self:destroy()
+    end)
 
     _drag(win, win.topbar)
 
     self._ui        = win
     self._folders   = win.content.folders
-    self._ui.Parent = game.Players.LocalPlayer:WaitForChild('PlayerGui')
 
     core = self
+end
+
+function window:__resize()
+    tween:Create(self._ui, twinfo, {Size = UDim2.new(0, 171, 0, (self._ui.Size.Y.Offset ~= 26) and 26 or 222)}):Play()
+end
+
+function window:destroy()
+    local anim = tween:Create(self._ui, twinfo, {Size = UDim2.new(0, 0, 0, 0)})
+
+    anim:Play()
+    anim.Completed:Connect(function()
+        self._ui.Parent:Destroy()
+    end)
 end
 
 function window:folder(name)
@@ -125,65 +151,79 @@ end
 function folder:__new(name)
     local nf = uifolder:Clone()
 
-    nf.opener.Text = tostring(name) or 'Folder'
+    nf.opener.Text = name and tostring(name) or 'Folder'
     nf.opener.MouseButton1Click:Connect(function()
+        if self._core.Size.Y.Offset == 20 then
+            self:__open()
+        else
+            self:__close()
+        end
     end)
 
-    nf.Parent      = core._folders
+    nf.Parent = core._folders
 
     self._core = nf
 end
 
-function folder:__resize()
-    local ti = TweenInfo.new(0.4, Enum.EasingStyle.Linear)
+function folder:__open()
+    local size = 20
 
-    if self._core.Size.Y.Offset ~= 20 then
-        local size = 2
-
-        for _, v in ipairs(self._core:GetChildren()) do
-            size = (size + v.Size.Y.Offset)
+    for _, v in ipairs(self._core:GetChildren()) do
+        if v:IsA('Frame') or v:IsA('TextButton') and v.Name ~= 'opener' then
+            size = (size + v.Size.Y.Offset + 2)
         end
 
-        tween:Create(self._core, ti, {Size = UDim2.new(0, 131, 0, size)}):Play()
-    else
-        tween:Create(self._core, ti, {Size = UDim2.new(0, 131, 0, 20)}):Play()
+        size = size + 2.6
     end
+
+    tween:Create(self._core, twinfo, {Size = UDim2.new(0, 142, 0, size)}):Play()
+end
+
+function folder:__close()
+    tween:Create(self._core, twinfo, {Size = UDim2.new(0, 142, 0, 20)}):Play()
 end
 
 function folder:divider(name)
     local nd = uidivider:Clone()
 
-    nd.details7.Text = tostring(name) or 'Divider'
-    nd.Parent        = self._core
+    nd.details.Text = name and tostring(name) or 'Divider'
+    nd.Parent       = self._core
 end
 
 function folder:slider(name, min, max, call)
     local ns = uislider:Clone()
 
-    ns.details2.Text = tostring(name) or 'Slider'
+    ns.details.Text = name and tostring(name) or 'Slider'
 
     local function fill(pos)
-        local delta = math.clamp((pos - ns.container.AbsolutePosition.X) / ns.container.AbsoluteSize.X, 0, 1)
-        local value = math.floor(min + (max - min) * delta)
+        local cabsx = ns.container.AbsolutePosition.X
+        local cw    = ns.container.AbsoluteSize.X
+        local delta = math.clamp((pos - cabsx) / cw, 0, 1)
+        local value = math.clamp(delta * max, min, max)
 
-        fill.Size       = UDim2.new(delta, 0, 1, 0)
-        ns.integer.Text = tostring(value)
+        tween:Create(ns.container.fill, TweenInfo.new(0.04, Enum.EasingStyle.Linear), {Size = UDim2.fromScale(delta, 1)}):Play()
 
-        call(value)
+        local rounded = math.floor(value + 0.5)
+
+        ns.integer.Text = tostring(rounded)
+
+        return rounded
     end
 
-    ns.container.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 then
-            fill(input.Position.X)
+    ns.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 and input.UserInputState == Enum.UserInputState.Begin then
+            local lastv = fill(mouse.X)
 
-            local movec = input:GetPropertyChangedSignal('Position'):Connect(function()
-                fill(input.Position.X)
+            local movec = mouse.Move:Connect(function()
+                lastv = fill(mouse.X)
             end)
 
-            local endc; endc = input:GetPropertyChangedSignal('UserInputState'):Connect(function()
-                if input.UserInputState == Enum.UserInputState.End then
+            local endc; endc = uinput.InputEnded:Connect(function(ninput)
+                if ninput.UserInputType == Enum.UserInputType.MouseButton1 then
                     movec:Disconnect()
                     endc:Disconnect()
+
+                    call(lastv)
                 end
             end)
         end
@@ -191,37 +231,189 @@ function folder:slider(name, min, max, call)
 
     ns.integer.FocusLost:Connect(function()
         local value = tonumber(ns.integer.Text)
+        local send  = 0
 
         if value then
             value = math.clamp(value, min, max)
 
-            ns.integer.Text = tostring(value)
+            local rounded = math.floor(value + 0.5)
 
-            fill(ns.container.AbsolutePosition.X + (value - min) / (max - min) * ns.container.AbsoluteSize.X)
+            send = rounded
+            ns.integer.Text = tostring(rounded)
+
+            local delta = (value - min) / (max - min)
+            fill(ns.container.AbsolutePosition.X + delta * ns.container.AbsoluteSize.X)
         else
-            ns.integer.Text = tostring(math.floor((min + max) / 2))
+            local midpoint = math.floor((min + max) / 2 + 0.5)
+
+            send = midpoint
+            ns.integer.Text = tostring(midpoint)
+
+            fill(ns.container.AbsolutePosition.X + (ns.container.AbsoluteSize.X / 2))
+        end
+
+        call(send)
+    end)
+
+    ns.Parent = self._core
+end
+
+function folder:query(placeholder, call)
+    local nq = uiquery:Clone()
+
+    nq.input.PlaceholderText = placeholder and tostring(placeholder) or 'Enter some text...'
+    nq.input.FocusLost:Connect(function(go)
+        if go then
+            call(nq.input.Text)
         end
     end)
 
-    fill(ns.container.AbsolutePosition.X + (ns.container.AbsoluteSize.X / 2))
+    nq.Parent = self._core
+end
+
+function folder:button(name, call)
+    local nb = uibutton:Clone()
+
+    nb.details.Text = name and tostring(name) or 'Button'
+    nb.MouseButton1Click:Connect(call)
+
+    nb.Parent = self._core
+end
+
+function folder:toggle(name, call)
+    local nt    = uitoggle:Clone()
+    local state = false
+
+    nt.details.Text = name and tostring(name) or 'Toggle'
+    nt.trigger.MouseButton1Click:Connect(function()
+        state = not state
+
+        if state then
+            tween:Create(nt.trigger, twinfo, {BackgroundColor3 = Color3.new(0.14902, 1, 0)}):Play()
+            tween:Create(nt.trigger, twinfo, {BackgroundTransparency = 0.6}):Play()
+        else
+            tween:Create(nt.trigger, twinfo, {BackgroundColor3 = Color3.new(1, 1, 1)}):Play()
+            tween:Create(nt.trigger, twinfo, {BackgroundTransparency = 0.95}):Play()
+        end
+
+        call(state)
+    end)
+
+    nt.Parent = self._core
+end
+
+function folder:dropdown(name, elements, call)
+    local nd = uidropdown:Clone()
+
+    nd.details.details.Text = name and tostring(name) or 'Dropdown'
+
+    local function __resize()
+        local size = 67
+
+        if nd.Size.Y.Offset == 67 then
+            size = 18
+        end
+
+        tween:Create(nd, twinfo, {Size = UDim2.new(0, 131, 0, size)}):Play()
+    end
+
+    nd.elements.ChildAdded:Connect(function()
+        nd.elements.CanvasSize = UDim2.new(0, 0, 0, nd.elements.layout.AbsoluteContentSize.Y)
+    end)
+
+    for _, v in ipairs(elements) do
+        local nel = ddel:Clone()
+
+        nel.Text = v
+        nel.MouseButton1Click:Connect(function()
+            call(v)
+            __resize()
+
+            task.wait(0.1)
+
+            self:__open()
+        end)
+
+        nel.Parent = nd.elements
+    end
+
+    nd.details.trigger.MouseButton1Click:Connect(function()
+        __resize()
+
+        task.wait(0.1)
+
+        self:__open()
+    end)
+
+    nd.Parent = self._core
 end
 
 -- library
-function library:__new()
+function seoul:__new()
     self._windows = {}
 end
 
-function library:window()
-    local win = window()
+function seoul:window()
+    if #self._windows == 0 then
+        local win = window()
 
-    insert(self._windows, win)
+        insert(self._windows, win)
 
-    return win
+        return win
+    end
 end
 
-function library:notify()
+function seoul:notify()
     return
 end
 
--- package
-return library
+local s  = seoul()
+local w  = s:window()
+local f  = w:folder()
+
+local char = client.Character
+
+f:slider('Walkspeed', 0, 500, function(v)
+    char.Humanoid.WalkSpeed = tonumber(v)
+end)
+
+f:button('Jump', function()
+    char.Humanoid.Jump = true
+end)
+
+f:toggle('Spin', function(s)
+    if s then
+        local Spin = Instance.new('BodyAngularVelocity')
+
+        Spin.Name            = 'Spin'
+        Spin.Parent          = char.HumanoidRootPart
+        Spin.AngularVelocity = Vector3.new(0, 20, 0)
+        Spin.MaxTorque       = Vector3.new(0, math.huge, 0)
+    else
+        for _, v in ipairs(char:GetDescendants()) do
+            if v.Name == 'Spin' then
+                v:Destroy();
+            end
+        end
+    end
+end)
+
+local plist = {}
+
+for _, v in ipairs(players:GetPlayers()) do
+    insert(plist, v.Name)
+end
+
+f:dropdown('Goto', plist, function(v)
+    for _, vv in ipairs(players:GetPlayers()) do
+        if vv.Name == v then
+            char.HumanoidRootPart.CFrame = vv.Character.HumanoidRootPart.CFrame; break
+        end
+    end
+end)
+
+f:query('Say', function(v)
+    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(v, 'All')
+end)
+
+return seoul
