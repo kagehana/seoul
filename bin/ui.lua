@@ -1,6 +1,5 @@
-local seoul                = Instance.new('ScreenGui')
-      seoul.Name           = 'seoul'
-      seoul.ZIndexBehavior = Enum.ZIndexBehavior.Global
+local seoul      = Instance.new('ScreenGui')
+      seoul.Name = 'seoul'
 
 local ui                  = Instance.new('Frame')
       ui.Name             = 'ui'
@@ -20,10 +19,9 @@ local topbar                  = Instance.new('Frame')
       topbar.BorderSizePixel  = 0
       topbar.BorderColor3     = Color3.new(0, 0, 0)
       topbar.Parent           = ui
-      topbar.ZIndex           = 99999
 
-local corners        = Instance.new('UICorner')
-      corners.Name   = 'corners'
+local corners      = Instance.new('UICorner')
+      corners.Name = 'corners'
       corners.Parent = topbar
 
 local patchwork                  = Instance.new('Frame')
@@ -51,9 +49,48 @@ local trademark                        = Instance.new('TextLabel')
       trademark.TextXAlignment         = Enum.TextXAlignment.Left
       trademark.Parent                 = topbar
 
-local corners2        = Instance.new('UICorner')
-      corners2.Name   = 'corners'
-      corners2.Parent = ui
+local escape                  = Instance.new('TextButton')
+      escape.Name             = 'escape'
+      escape.Position         = UDim2.new(0.824561, 0, 0.2, 0)
+      escape.Size             = UDim2.new(0, 24, 0, 12)
+      escape.BackgroundColor3 = Color3.new(0.105882, 0.105882, 0.105882)
+      escape.BorderSizePixel  = 0
+      escape.BorderColor3     = Color3.new(0, 0, 0)
+      escape.Text             = 'X'
+      escape.TextColor3       = Color3.new(1, 0.164706, 0.164706)
+      escape.TextSize         = 14
+      escape.FontFace         = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+      escape.TextScaled       = true
+      escape.TextWrapped      = true
+      escape.Parent           = topbar
+
+local corners2              = Instance.new('UICorner')
+      corners2.Name         = 'corners'
+      corners2.CornerRadius = UDim.new(0, 4)
+      corners2.Parent       = escape
+
+local minimize                  = Instance.new('TextButton')
+      minimize.Name             = 'minimize'
+      minimize.Position         = UDim2.new(0.666667, 0, 0.2, 0)
+      minimize.Size             = UDim2.new(0, 24, 0, 12)
+      minimize.BackgroundColor3 = Color3.new(0.105882, 0.105882, 0.105882)
+      minimize.BorderSizePixel  = 0
+      minimize.BorderColor3     = Color3.new(0, 0, 0)
+      minimize.Text             = '-'
+      minimize.TextColor3       = Color3.new(1, 0.752941, 0.129412)
+      minimize.TextSize         = 23
+      minimize.FontFace         = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+      minimize.TextWrapped      = true
+      minimize.Parent           = topbar
+
+local corners3              = Instance.new('UICorner')
+      corners3.Name         = 'corners'
+      corners3.CornerRadius = UDim.new(0, 4)
+      corners3.Parent       = minimize
+
+local corners4      = Instance.new('UICorner')
+      corners4.Name = 'corners'
+      corners4.Parent = ui
 
 local content                  = Instance.new('Frame')
       content.Name             = 'content'
@@ -64,10 +101,10 @@ local content                  = Instance.new('Frame')
       content.BorderColor3     = Color3.new(0, 0, 0)
       content.Parent           = ui
 
-local corners3              = Instance.new('UICorner')
-      corners3.Name         = 'corners'
-      corners3.CornerRadius = UDim.new(0, 4)
-      corners3.Parent       = content
+local corners5              = Instance.new('UICorner')
+      corners5.Name         = 'corners'
+      corners5.CornerRadius = UDim.new(0, 4)
+      corners5.Parent       = content
 
 local outline                 = Instance.new('UIStroke')
       outline.Name            = 'outline'
@@ -103,10 +140,10 @@ local folder                        = Instance.new('Frame')
       folder.Transparency           = 1
       folder.Parent                 = nil
 
-local corners4              = Instance.new('UICorner')
-      corners4.Name         = 'corners'
-      corners4.CornerRadius = UDim.new(0, 4)
-      corners4.Parent       = folder
+local corners6              = Instance.new('UICorner')
+      corners6.Name         = 'corners'
+      corners6.CornerRadius = UDim.new(0, 4)
+      corners6.Parent       = folder
 
 local opener                  = Instance.new('TextButton')
       opener.Name             = 'opener'
@@ -120,10 +157,10 @@ local opener                  = Instance.new('TextButton')
       opener.FontFace         = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
       opener.Parent           = folder
 
-local corners5              = Instance.new('UICorner')
-      corners5.Name         = 'corners'
-      corners5.CornerRadius = UDim.new(0, 4)
-      corners5.Parent       = opener
+local corners7              = Instance.new('UICorner')
+      corners7.Name         = 'corners'
+      corners7.CornerRadius = UDim.new(0, 4)
+      corners7.Parent       = opener
 
 local symbol                        = Instance.new('ImageButton')
       symbol.Name                   = 'symbol'
@@ -146,10 +183,10 @@ local toggle                  = Instance.new('Frame')
       toggle.BorderColor3     = Color3.new(0, 0, 0)
       toggle.Parent           = nil
 
-local corners6              = Instance.new('UICorner')
-      corners6.Name         = 'corners'
-      corners6.CornerRadius = UDim.new(0, 4)
-      corners6.Parent       = toggle
+local corners8              = Instance.new('UICorner')
+      corners8.Name         = 'corners'
+      corners8.CornerRadius = UDim.new(0, 4)
+      corners8.Parent       = toggle
 
 local details                        = Instance.new('TextLabel')
       details.Name                   = 'details'
@@ -184,10 +221,10 @@ local trigger                        = Instance.new('TextButton')
       trigger.FontFace               = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
       trigger.Parent                 = toggle
 
-local corners7              = Instance.new('UICorner')
-      corners7.Name         = 'corners'
-      corners7.CornerRadius = UDim.new(0, 111)
-      corners7.Parent       = trigger
+local corners9              = Instance.new('UICorner')
+      corners9.Name         = 'corners'
+      corners9.CornerRadius = UDim.new(0, 111)
+      corners9.Parent       = trigger
 
 local outline2                 = Instance.new('UIStroke')
       outline2.Name            = 'outline'
@@ -205,10 +242,10 @@ local slider                  = Instance.new('Frame')
       slider.BorderColor3     = Color3.new(0, 0, 0)
       slider.Parent           = nil
 
-local corners8              = Instance.new('UICorner')
-      corners8.Name         = 'corners'
-      corners8.CornerRadius = UDim.new(0, 4)
-      corners8.Parent       = slider
+local corners10              = Instance.new('UICorner')
+      corners10.Name         = 'corners'
+      corners10.CornerRadius = UDim.new(0, 4)
+      corners10.Parent       = slider
 
 local details2                        = Instance.new('TextLabel')
       details2.Name                   = 'details'
@@ -236,10 +273,10 @@ local container                  = Instance.new('Frame')
       container.BorderColor3     = Color3.new(0, 0, 0)
       container.Parent           = slider
 
-local corners9              = Instance.new('UICorner')
-      corners9.Name         = 'corners'
-      corners9.CornerRadius = UDim.new(0, 4)
-      corners9.Parent       = container
+local corners11              = Instance.new('UICorner')
+      corners11.Name         = 'corners'
+      corners11.CornerRadius = UDim.new(0, 4)
+      corners11.Parent       = container
 
 local fill                  = Instance.new('Frame')
       fill.Name             = 'fill'
@@ -251,10 +288,10 @@ local fill                  = Instance.new('Frame')
       fill.AnchorPoint      = Vector2.new(0.5, 0.5)
       fill.Parent           = container
 
-local corners10              = Instance.new('UICorner')
-      corners10.Name         = 'corners'
-      corners10.CornerRadius = UDim.new(0, 4)
-      corners10.Parent       = fill
+local corners12              = Instance.new('UICorner')
+      corners12.Name         = 'corners'
+      corners12.CornerRadius = UDim.new(0, 4)
+      corners12.Parent       = fill
 
 local integer                        = Instance.new('TextBox')
       integer.Name                   = 'integer'
@@ -271,14 +308,14 @@ local integer                        = Instance.new('TextBox')
       integer.FontFace               = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
       integer.TextScaled             = true
       integer.TextWrapped            = true
-      integer.PlaceholderText        = '0'
+      integer.PlaceholderText        = '1'
       integer.PlaceholderColor3      = Color3.new(1, 1, 1)
       integer.Parent                 = slider
 
-local UICorner              = Instance.new('UICorner')
-      UICorner.Name         = 'UICorner'
-      UICorner.CornerRadius = UDim.new(0, 2)
-      UICorner.Parent       = integer
+local corners13              = Instance.new('UICorner')
+      corners13.Name         = 'corners'
+      corners13.CornerRadius = UDim.new(0, 2)
+      corners13.Parent       = integer
 
 local outline3                 = Instance.new('UIStroke')
       outline3.Name            = 'outline'
@@ -297,10 +334,10 @@ local dropdown                  = Instance.new('Frame')
       dropdown.ClipsDescendants = true
       dropdown.Parent           = nil
 
-local corners11              = Instance.new('UICorner')
-      corners11.Name         = 'corners'
-      corners11.CornerRadius = UDim.new(0, 4)
-      corners11.Parent       = dropdown
+local corners14              = Instance.new('UICorner')
+      corners14.Name         = 'corners'
+      corners14.CornerRadius = UDim.new(0, 4)
+      corners14.Parent       = dropdown
 
 local details3                        = Instance.new('Frame')
       details3.Name                   = 'details'
@@ -376,10 +413,10 @@ local element                  = Instance.new('TextButton')
       element.TextWrapped      = true
       element.Parent           = elements
 
-local corners12              = Instance.new('UICorner')
-      corners12.Name         = 'corners'
-      corners12.CornerRadius = UDim.new(0, 4)
-      corners12.Parent       = element
+local corners15              = Instance.new('UICorner')
+      corners15.Name         = 'corners'
+      corners15.CornerRadius = UDim.new(0, 4)
+      corners15.Parent       = element
 
 local layout2                     = Instance.new('UIListLayout')
       layout2.Name                = 'layout'
@@ -400,10 +437,10 @@ local button                  = Instance.new('TextButton')
       button.FontFace         = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
       button.Parent           = nil
 
-local corners13              = Instance.new('UICorner')
-      corners13.Name         = 'corners'
-      corners13.CornerRadius = UDim.new(0, 4)
-      corners13.Parent       = button
+local corners16              = Instance.new('UICorner')
+      corners16.Name         = 'corners'
+      corners16.CornerRadius = UDim.new(0, 4)
+      corners16.Parent       = button
 
 local details5                        = Instance.new('TextLabel')
       details5.Name                   = 'details'
@@ -437,10 +474,10 @@ local query                  = Instance.new('Frame')
       query.BorderColor3     = Color3.new(0, 0, 0)
       query.Parent           = nil
 
-local corners14              = Instance.new('UICorner')
-      corners14.Name         = 'corners'
-      corners14.CornerRadius = UDim.new(0, 4)
-      corners14.Parent       = query
+local corners17              = Instance.new('UICorner')
+      corners17.Name         = 'corners'
+      corners17.CornerRadius = UDim.new(0, 4)
+      corners17.Parent       = query
 
 local input                  = Instance.new('TextBox')
       input.Name             = 'input'
@@ -460,10 +497,10 @@ local input                  = Instance.new('TextBox')
       input.PlaceholderText  = 'Enter some text...'
       input.Parent           = query
 
-local UICorner2              = Instance.new('UICorner')
-      UICorner2.Name         = 'UICorner'
-      UICorner2.CornerRadius = UDim.new(0, 4)
-      UICorner2.Parent       = input
+local corners18              = Instance.new('UICorner')
+      corners18.Name         = 'corners'
+      corners18.CornerRadius = UDim.new(0, 4)
+      corners18.Parent       = input
 
 local keybind                  = Instance.new('Frame')
       keybind.Name             = 'keybind'
@@ -474,10 +511,10 @@ local keybind                  = Instance.new('Frame')
       keybind.BorderColor3     = Color3.new(0, 0, 0)
       keybind.Parent           = nil
 
-local corners15              = Instance.new('UICorner')
-      corners15.Name         = 'corners'
-      corners15.CornerRadius = UDim.new(0, 4)
-      corners15.Parent       = keybind
+local corners19              = Instance.new('UICorner')
+      corners19.Name         = 'corners'
+      corners19.CornerRadius = UDim.new(0, 4)
+      corners19.Parent       = keybind
 
 local input2                  = Instance.new('TextBox')
       input2.Name             = 'input'
@@ -487,7 +524,7 @@ local input2                  = Instance.new('TextBox')
       input2.BorderSizePixel  = 0
       input2.BorderColor3     = Color3.new(0, 0, 0)
       input2.AnchorPoint      = Vector2.new(0.5, 0.5)
-      input2.Text             = 'K'
+      input2.Text             = ''
       input2.TextColor3       = Color3.new(1, 1, 1)
       input2.TextSize         = 14
       input2.FontFace         = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
@@ -496,10 +533,10 @@ local input2                  = Instance.new('TextBox')
       input2.PlaceholderText  = '?'
       input2.Parent           = keybind
 
-local UICorner3              = Instance.new('UICorner')
-      UICorner3.Name         = 'UICorner'
-      UICorner3.CornerRadius = UDim.new(0, 4)
-      UICorner3.Parent       = input2
+local corners20              = Instance.new('UICorner')
+      corners20.Name         = 'corners'
+      corners20.CornerRadius = UDim.new(0, 4)
+      corners20.Parent       = input2
 
 local details6                        = Instance.new('TextLabel')
       details6.Name                   = 'details'
@@ -529,10 +566,10 @@ local divider                        = Instance.new('Frame')
       divider.Transparency           = 1
       divider.Parent                 = nil
 
-local corners16              = Instance.new('UICorner')
-      corners16.Name         = 'corners'
-      corners16.CornerRadius = UDim.new(0, 4)
-      corners16.Parent       = divider
+local corners21              = Instance.new('UICorner')
+      corners21.Name         = 'corners'
+      corners21.CornerRadius = UDim.new(0, 4)
+      corners21.Parent       = divider
 
 local details7                        = Instance.new('TextLabel')
       details7.Name                   = 'details'
@@ -559,10 +596,10 @@ local palette                  = Instance.new('Frame')
       palette.BorderColor3     = Color3.new(0, 0, 0)
       palette.Parent           = nil
 
-local corners17              = Instance.new('UICorner')
-      corners17.Name         = 'corners'
-      corners17.CornerRadius = UDim.new(0, 4)
-      corners17.Parent       = palette
+local corners22              = Instance.new('UICorner')
+      corners22.Name         = 'corners'
+      corners22.CornerRadius = UDim.new(0, 4)
+      corners22.Parent       = palette
 
 local details8                        = Instance.new('TextLabel')
       details8.Name                   = 'details'
@@ -595,10 +632,10 @@ local trigger3                  = Instance.new('TextButton')
       trigger3.FontFace         = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
       trigger3.Parent           = palette
 
-local corners18              = Instance.new('UICorner')
-      corners18.Name         = 'corners'
-      corners18.CornerRadius = UDim.new(0, 2)
-      corners18.Parent       = trigger3
+local corners23              = Instance.new('UICorner')
+      corners23.Name         = 'corners'
+      corners23.CornerRadius = UDim.new(0, 2)
+      corners23.Parent       = trigger3
 
 local outline4                 = Instance.new('UIStroke')
       outline4.Name            = 'outline'
@@ -625,6 +662,7 @@ local layout5                     = Instance.new('UIListLayout')
       layout5.HorizontalAlignment = Enum.HorizontalAlignment.Center
       layout5.SortOrder           = Enum.SortOrder.LayoutOrder
       layout5.Parent              = ui
+
 
 
 
