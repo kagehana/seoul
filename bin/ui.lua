@@ -1,5 +1,6 @@
-local seoul      = Instance.new('ScreenGui')
-      seoul.Name = 'seoul'
+local seoul                = Instance.new('ScreenGui')
+      seoul.Name           = 'seoul'
+      seoul.ZIndexBehavior = Enum.ZIndexBehavior.Global
 
 local ui                  = Instance.new('Frame')
       ui.Name             = 'ui'
