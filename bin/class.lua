@@ -2,6 +2,7 @@
 local meta = {}
 
 function meta:__call(...)
+    print(11)
     return (setmetatable({}, self)):__new(...)
 end
 
