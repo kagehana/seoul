@@ -4,7 +4,7 @@ local repo   = 'kagehana/seoul'
 local branch = 'refs/heads/main/bin'
 
 local function get(fname)
-    return loadstring(game:HttpGet('%s/%s/%s/%s.lua'):format(rawgit, repo, branch, fname))()
+    return loadstring(game:HttpGet(('%s/%s/%s/%s.lua'):format(rawgit, repo, branch, fname)))()
 end
 
 
