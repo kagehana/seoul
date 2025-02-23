@@ -273,8 +273,8 @@ local corners11              = Instance.new('UICorner')
 
 local fill                  = Instance.new('Frame')
       fill.Name             = 'fill'
-      fill.Position         = UDim2.new(0.0769231, 0, 0.5, 0)
-      fill.Size             = UDim2.new(0, 14, 0, 12)
+      fill.Position         = UDim2.new(0,0,0,0)
+      fill.Size             = UDim2.new(0, 0, 0, 12)
       fill.BackgroundColor3 = Color3.new(1, 1, 1)
       fill.BorderSizePixel  = 0
       fill.BorderColor3     = Color3.new(0, 0, 0)
