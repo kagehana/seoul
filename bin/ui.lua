@@ -278,7 +278,6 @@ local fill                  = Instance.new('Frame')
       fill.BackgroundColor3 = Color3.new(1, 1, 1)
       fill.BorderSizePixel  = 0
       fill.BorderColor3     = Color3.new(0, 0, 0)
-      fill.AnchorPoint      = Vector2.new(0.5, 0.5)
       fill.Parent           = container
 
 local corners12              = Instance.new('UICorner')
