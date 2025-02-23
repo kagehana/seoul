@@ -303,8 +303,8 @@ local integer                        = Instance.new('TextBox')
       integer.FontFace               = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
       integer.TextScaled             = true
       integer.TextWrapped            = true
-      integer.PlaceholderText        = '1'
-      integer.PlaceholderColor3      = Color3.new(1, 1, 1)
+      integer.PlaceholderText        = '0'
+      integer.PlaceholderColor3      = Color3.new(255, 255, 255)
       integer.Parent                 = slider
 
 local corners13              = Instance.new('UICorner')
