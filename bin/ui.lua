@@ -20,6 +20,7 @@ local topbar                  = Instance.new('Frame')
       topbar.BorderSizePixel  = 0
       topbar.BorderColor3     = Color3.new(0, 0, 0)
       topbar.Parent           = ui
+      topbar.ZIndex           = 99999
 
 local corners        = Instance.new('UICorner')
       corners.Name   = 'corners'
