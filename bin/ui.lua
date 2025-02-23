@@ -10,6 +10,7 @@ local ui                  = Instance.new('Frame')
       ui.BorderColor3     = Color3.new(0, 0, 0)
       ui.AnchorPoint      = Vector2.new(0.5, 0.5)
       ui.ClipsDescendants = true
+      ui.Parent           = seoul
 
 local topbar                  = Instance.new('Frame')
       topbar.Name             = 'topbar'
