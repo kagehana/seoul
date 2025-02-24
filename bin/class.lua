@@ -1,22 +1,22 @@
 -- metadata for classes
 local meta = {}
 
-function meta:__call(...)
-    local obj = setmetatable({}, self)
-
-    obj:__new(...)
-
-    return obj
-end
-
 function meta:__tostring()
     return ('class: ' .. self.__name)
 end
 
 function meta:__assign(...)
     for k, v in ipairs({...}) do
-        self[k] = v
+        self['_' .. k] = v
     end
+end
+
+function meta:__call(...)
+    local obj = setmetatable({}, self)
+
+    obj:__new(...)
+
+    return obj
 end
 
 -- class system implementation
