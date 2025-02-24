@@ -1,16 +1,35 @@
 -- metadata for classes
 local meta = {}
 
+--[=[
+    @method meta:__tostring
+    returns a string representation of the class.
+
+    @return string the class name.
+]=]
 function meta:__tostring()
     return ('class: ' .. self.__name)
 end
 
+--[=[
+    @method meta:__assign
+    assigns values to the class instance.
+
+    @param ... (any) the values to assign.
+]=]
 function meta:__assign(...)
-    for k, v in ipairs({...}) do
-        self['_' .. k] = v
+    for k, v in pairs({...}) do
+        self[k] = v
     end
 end
 
+--[=[
+    @method meta:__call
+    creates a new instance of the class.
+
+    @param ... (any) the arguments passed to the constructor.
+    @return table the new instance.
+]=]
 function meta:__call(...)
     local obj = setmetatable({}, self)
 
@@ -19,7 +38,14 @@ function meta:__call(...)
     return obj
 end
 
--- class system implementation
+--[=[
+    @function class
+    creates a new class.
+
+    @param name (string) the name of the class.
+    @param ... (table) the base classes to inherit from.
+    @return table the new class.
+]=]
 local function class(name, ...)
     local new   = setmetatable({}, meta)
     local bases = {...}
@@ -39,5 +65,4 @@ local function class(name, ...)
     return new
 end
 
--- here you go
 return class
