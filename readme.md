@@ -109,7 +109,9 @@ Once the UI loads, opening the folder should result in this: \
 ### Dynamic Updates  
 Most elements support dynamic updates.
 ```lua
+-- generate a window
 local window = seoul:window()
+-- generate a slider
 local slider = window:slider({
     name = 'Walk Speed',
     min  = 0,
@@ -119,7 +121,7 @@ local slider = window:slider({
     end
 })
 
--- don't let them go as fast
+-- reduce their maximum speed
 slider:modify({ max = 80 })
 ```
 
