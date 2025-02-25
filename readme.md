@@ -104,7 +104,7 @@ seoul:notify({
 
 ## **Advanced Usage**  
 ### Dynamic Updates  
-Most elements support dynamic updates. For example:  
+Most elements support dynamic updates.
 ```lua
 local window = seoul:window()
 local slider = window:slider({
