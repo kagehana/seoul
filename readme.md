@@ -120,9 +120,9 @@ local slider = window:slider({
 slider:modify({ max = 80 })
 ```
 
-### Method Chaining  
+### Method Chaining
+This is a redundant example. It's just meant to give a perspective.
 ```lua
-
 window
     :divider('Teleports')
     :modify('Destinations')
