@@ -310,7 +310,7 @@ end
 
     @param gui (Instance) the roblox instance representing the query input.
     @param data (table) the initial configuration for the query.
-        @field name (string) the placeholder text for the input field.
+        @field placeholder (string) the placeholder text for the input field.
         @field call (function) the callback function triggered when the input is submitted.
 
     @private
@@ -332,7 +332,7 @@ function query:modify(new)
     self:__assign(new)
 
     if new.placeholder then
-        self._instance.input.PlaceholderText = new.name
+        self._instance.input.PlaceholderText = new.placeholder
     end
 
     return self
