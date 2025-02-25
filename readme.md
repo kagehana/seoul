@@ -119,6 +119,9 @@ local slider = window:slider({
 -- don't let them go as fast
 slider:modify({ max = 80 })
 ```
+Once the UI loads, opening the folder should result in this: \
+ \
+![Screenshot 2025-02-25 063315-modified](https://github.com/user-attachments/assets/39c92087-b1cf-473d-b5ec-ecb0381d4be4)
 
 ### Method Chaining
 This is a redundant example. It's just meant to give a perspective.
