@@ -80,7 +80,7 @@ folder:dropdown({
 })
 
 -- add a textbox/query
-settingsFolder:query({
+folder:query({
     placeholder = 'Enter text...', -- query's placeholder text
     call = function(input)         -- query's callback
         print('Received input:', input)
