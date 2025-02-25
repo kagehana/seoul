@@ -15,9 +15,9 @@ Seoul is designed to be **simple yet powerful**, making it the perfect choice fo
 
 ### Need to know more?  
 🎨 **Aesthetic Design**: A clean, neutral color palette that's easy on the eyes.  
-⚙️ **Dynamic Customization**: Nearly every aspect is modifiable, with clear examples provided in the documentation.  
-🌀 **Animated**: Fluid transitions for a polished user experience.  
-🔗 **Method Chaining**: Built-in support for [**method chaining**](https://en.wikipedia.org/wiki/Method_chaining) in most cases, enabling clean and efficient code.  
+⚙️ **Dynamic Modification**: Nearly every element is modifiable.
+🌀 **Animated**: Fluid animations for a polished user experience.  
+🔗 **Method Chaining**: Built-in support for [**method chaining**](https://en.wikipedia.org/wiki/Method_chaining).
 🛠️ **Actively Maintained**: Regular updates and ongoing developmen.
 
 ## **Capability**  
