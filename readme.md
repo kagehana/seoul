@@ -1,6 +1,6 @@
 # **Seoul**  
 Your next UI-library. Representing versatility and abstraction. \
-Refer to the [**License**]().
+Refer to the [**License**](https://github.com/kagehana/seoul/blob/main/readme.md#license).
 
 ## **Disclaimers**
 1. This library mostly assumes you'll pass the right data to generators. Adhering to this assumption is your responsibility. Validation for data might be added in the future, but it's not a priority.
@@ -16,11 +16,20 @@ Seoul is designed to be **simple yet powerful**, making it the perfect choice fo
 ### Need to know more?  
 🎨 **Aesthetic Design**: A clean, neutral color palette that's easy on the eyes.  
 ⚙️ **Dynamic Customization**: Nearly every aspect is modifiable, with clear examples provided in the documentation.  
-🌀 **Smooth Animations**: Fluid transitions for a polished user experience.  
+🌀 **Animated**: Fluid transitions for a polished user experience.  
 🔗 **Method Chaining**: Built-in support for [**method chaining**](https://en.wikipedia.org/wiki/Method_chaining) in most cases, enabling clean and efficient code.  
-🛠️ **Actively Maintained**: Regular updates and ongoing development ensure reliability and modern features.  
+🛠️ **Actively Maintained**: Regular updates and ongoing developmen.
 
----
+## **Capability**  
+`Seoul` currently allows you to generate these element types:
+* One window
+* Folders/Tabs
+* Sliders
+* Dividers
+* Buttons
+* Toggles
+* Dropdowns
+* Queries/Textboxes
 
 ## **Quick Start**
 ```lua
@@ -86,22 +95,7 @@ seoul:notify({
     name = ''
 ```
 
----
-
-## **Capability**  
-`Seoul` currently allows you to generate these element types:
-* One window
-* Folders/Tabs
-* Sliders
-* Dividers
-* Buttons
-* Toggles
-* Dropdowns
-* Queries/Textboxes
-
----
-
-## 🛠**Advanced Usage**  
+## **Advanced Usage**  
 ### Dynamic Updates  
 Most elements support dynamic updates. For example:  
 ```lua
@@ -137,13 +131,9 @@ window:query({
 
 Support for method-chaining on **ALL** elements is planned.
 
----
-
 ## **Connect** 
 - **Direct Contact**: `@asfdajshf` on [**Discord**](https://discord.com/)
 - **GitHub Issues**: Report any bugs or desired features.  
-
----
 
 ## **License**  
 ### Custom License  
