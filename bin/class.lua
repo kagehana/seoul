@@ -47,7 +47,7 @@ end
     @return table the new class.
 ]=]
 local function class(name, ...)
-    local new   = setmetatable({}, meta)
+    local new   = {}
     local bases = {...}
 
     for _, base in ipairs(bases) do
@@ -62,7 +62,7 @@ local function class(name, ...)
     new.__bases = bases
     new.__index = new
 
-    return new
+    return setmetatable(new, meta)
 end
 
 return class
