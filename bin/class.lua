@@ -1,43 +1,3 @@
--- metadata for classes
-local meta = {}
-
---[=[
-    @method meta:__tostring
-    returns a string representation of the class.
-
-    @return string the class name.
-]=]
-function meta:__tostring()
-    return ('class: ' .. self.__name)
-end
-
---[=[
-    @method meta:__assign
-    assigns values to the class instance.
-
-    @param ... (any) the values to assign.
-]=]
-function meta:__assign(...)
-    for k, v in pairs({...}) do
-        self[k] = v
-    end
-end
-
---[=[
-    @method meta:__call
-    creates a new instance of the class.
-
-    @param ... (any) the arguments passed to the constructor.
-    @return table the new instance.
-]=]
-function meta:__call(...)
-    local obj = setmetatable({}, self)
-
-    obj:__new(...)
-
-    return obj
-end
-
 --[=[
     @function class
     creates a new class.
@@ -47,13 +7,37 @@ end
     @return table the new class.
 ]=]
 local function class(name, ...)
-    local new   = {}
+    local new = {}
+
+    setmetatable(new, {
+        __call = function(cls, ...)
+            local obj = setmetatable({}, cls)
+
+            if cls.__new then
+                cls.__new(obj, ...)
+            end
+
+            return obj
+        end,
+        __tostring = function(cls)
+            return 'class: ' .. cls.__name
+        end
+    })
+
     local bases = {...}
 
-    for _, base in ipairs(bases) do
-        for k1, v1 in pairs(base) do
-            if not k1:find('^__') then
-                new[k1] = v1
+    for _, v in ipairs(bases) do
+        for k, v in pairs(v) do
+            if not k:find('^__') then
+                new[k] = v
+            end
+        end
+    end
+
+    function new:__assign(...)
+        for _, v in ipairs({...}) do
+            for k, vv in pairs(v) do
+                self['_' .. k] = vv
             end
         end
     end
@@ -62,7 +46,7 @@ local function class(name, ...)
     new.__bases = bases
     new.__index = new
 
-    return setmetatable(new, meta)
+    return new
 end
 
 return class
