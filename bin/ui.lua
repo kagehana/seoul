@@ -658,12 +658,13 @@ local notifications                        = Instance.new('Frame')
       notifications.ClipsDescendants       = true
       notifications.Parent                 = seoul
 
-local layout6                   = Instance.new('UIListLayout')
-      layout6.Name              = 'layout'
-      layout6.Padding           = UDim.new(0, 4)
-      layout6.VerticalAlignment = Enum.VerticalAlignment.Bottom
-      layout6.SortOrder         = Enum.SortOrder.LayoutOrder
-      layout6.Parent            = notifications
+local layout6                     = Instance.new('UIListLayout')
+      layout6.Name                = 'layout'
+      layout6.Padding             = UDim.new(0, 4)
+      layout6.VerticalAlignment   = Enum.VerticalAlignment.Bottom
+      layout6.HorizontalAlignment = Enum.HorizontalAlignment.Center
+      layout6.SortOrder           = Enum.SortOrder.LayoutOrder
+      layout6.Parent              = notifications
 
 local notification                  = Instance.new('Frame')
       notification.Name             = 'notification'
