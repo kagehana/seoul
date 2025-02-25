@@ -11,7 +11,7 @@ Refer to the [**License**](https://github.com/kagehana/seoul/blob/main/readme.md
     * Similarly, elements prefixed with `_` (e.g., `window._folders`) are **not meant to be accessed**. 
 
 ## **Why Seoul?**
-Seoul is designed to be **simple yet powerful**, making it the perfect choice for both beginners and advanced users. Whether you're building a small project or a complex application, Seoul has the tools you need to create a stunning and functional UI.
+Seoul is designed to be **simple yet powerful**, making it the perfect choice for both beginners and advanced users. Whether you're building a small project or a complex application, Seoul has the capability you need to create a modern, functional UI.
 
 ### Need to know more?  
 🎨 **Aesthetic Design**: A clean, neutral color palette that's easy on the eyes. \
