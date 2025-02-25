@@ -65,8 +65,8 @@ folder:divider('More')
 -- add a slider
 folder:slider({
     name = 'Slider',       -- slider's name
-    min = 0,               -- slider's minimum value
-    max = 250,             -- slider's maximum value
+    min  = 0,              -- slider's minimum value
+    max  = 250,            -- slider's maximum value
     call = function(value) -- slider's callback
         print('Slid to:', value)
     end
@@ -74,27 +74,30 @@ folder:slider({
 
 -- add a dropdown
 folder:dropdown({
-    name = 'Dropdown',          -- dropdown's name
-    elements = {'1', '2', '3'}, -- dropdown's options
-    call = function(selected)   -- dropdown's callback
-        print("'elected option:', selected)
+    name     = 'Dropdown',        -- dropdown's name
+    elements = {'1', '2', '3'},   -- dropdown's options
+    call     = function(selected) -- dropdown's callback
+        print('Selected option:', selected)
     end
 })
 
 -- add a textbox/query
 folder:query({
     placeholder = 'Enter text...', -- query's placeholder text
-    call = function(input)         -- query's callback
+    call        = function(input)  -- query's callback
         print('Received input:', input)
     end
 })
+
+-- make the window visible
+window:ready()
 
 -- notify the user with a default lifespan of 4.5s
 seoul:notify('Interface loaded!')
 
 -- optionally, you can pass a duration for the notification
 seoul:notify({
-    msg      = 'Interface loaded!', -- notification's message
+    message  = 'Interface loaded!', -- notification's message
     duration = 3.5                  -- notification's lifespan
 })
 ```
