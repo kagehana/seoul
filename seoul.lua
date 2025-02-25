@@ -159,11 +159,6 @@ function window:__new(core, trademark)
     self._folders.layout:GetPropertyChangedSignal('AbsoluteContentSize', function()
         self._folders.CanvasSize = UDim2.fromOffset(0, self._folders.layout.AbsoluteContentSize.Y + 42)
     end)
-
-    local show = tween:Create(self._ui, twinfo, {Size = UDim2.new(0, 171, 0, 222)})
-
-    show:Play()
-    show.Completed:Wait()
 end
 
 --[=[
@@ -212,6 +207,19 @@ end
 ]=]
 function window:folder(name)
     return folder(self, name)
+end
+
+--[=[
+    @method ready
+    makes the window visible.
+]=]
+function window:ready()
+    if self._ui.Size.X.Offset ~= 171 then
+        local show = tween:Create(self._ui, twinfo, {Size = UDim2.new(0, 171, 0, 222)})
+
+        show:Play()
+        show.Completed:Wait()
+    end
 end
 
 
@@ -532,7 +540,7 @@ function folder:__close()
 end
 
 --[=[
-    @method folder:divider
+    @method divider
     creates a new divider element within the folder.
 
     @param data (string) the title of the divider.
@@ -548,7 +556,7 @@ function folder:divider(data)
 end
 
 --[=[
-    @method folder:slider
+    @method slider
     creates a new slider element within the folder.
 
     @param data (table) the configuration for the slider.
@@ -629,7 +637,7 @@ function folder:slider(data)
 end
 
 --[=[
-    @method folder:query
+    @method query
     creates a new query (text input) element within the folder.
 
     @param data (table) the configuration for the query.
@@ -653,7 +661,7 @@ function folder:query(data)
 end
 
 --[=[
-    @method folder:button
+    @method button
     creates a new button element within the folder.
 
     @param data (table) the configuration for the button.
@@ -675,7 +683,7 @@ function folder:button(data)
 end
 
 --[=[
-    @method folder:toggle
+    @method toggle
     creates a new toggle element within the folder.
 
     @param data (table) the configuration for the toggle.
@@ -709,7 +717,7 @@ function folder:toggle(data)
 end
 
 --[=[
-    @method folder:dropdown
+    @method dropdown
     creates a new dropdown element within the folder.
 
     @param data (table) the configuration for the dropdown.
@@ -815,7 +823,7 @@ function seoul:notify(data)
        (table.remove(self._notifs, 1)):Destroy()
     end
 
-    table.insert(self._notifs, notif)
+    insert(self._notifs, notif)
 
     local function remove(target)
         if not target then
