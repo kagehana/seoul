@@ -1,6 +1,6 @@
 # **Seoul**  
 Your next UI-library. Representing versatility and abstraction. \
-Refer to the [**License**](https://github.com/kagehana/seoul/blob/main/readme.md#license).
+Refer to the [**License**](https://github.com/kagehana/seoul/blob/main/readme.md#license) before continuing.
 
 ## **Disclaimers**
 1. This library mostly assumes you'll pass the right data to generators. Adhering to this assumption is your responsibility. Validation for data might be added in the future, but it's not a priority.
