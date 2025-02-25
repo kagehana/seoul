@@ -647,8 +647,110 @@ local layout5                     = Instance.new('UIListLayout')
       layout5.SortOrder           = Enum.SortOrder.LayoutOrder
       layout5.Parent              = ui
 
+local notifications                        = Instance.new('Frame')
+      notifications.Name                   = 'notifications'
+      notifications.Position               = UDim2.new(0.835443, 0, 0.491736, 0)
+      notifications.Size                   = UDim2.new(0, 142, 0, 236)
+      notifications.BackgroundColor3       = Color3.new(1, 1, 1)
+      notifications.BackgroundTransparency = 1
+      notifications.BorderSizePixel        = 0
+      notifications.BorderColor3           = Color3.new(0, 0, 0)
+      notifications.ClipsDescendants       = true
+      notifications.Transparency           = 1
+      notifications.Parent                 = seoul
+
+local layout6                   = Instance.new('UIListLayout')
+      layout6.Name              = 'layout'
+      layout6.Padding           = UDim.new(0, 4)
+      layout6.VerticalAlignment = Enum.VerticalAlignment.Bottom
+      layout6.SortOrder         = Enum.SortOrder.LayoutOrder
+      layout6.Parent            = notifications
+
+local notification                  = Instance.new('Frame')
+      notification.Name             = 'notification'
+      notification.Position         = UDim2.new(0, 0, 0.760684, 0)
+      notification.Size             = UDim2.new(0, 0, 0, 0)
+      notification.BackgroundColor3 = Color3.new(0.105882, 0.105882, 0.105882)
+      notification.BorderSizePixel  = 0
+      notification.BorderColor3     = Color3.new(0, 0, 0)
+      notification.Parent           = nil
+
+local corners24              = Instance.new('UICorner')
+      corners24.Name         = 'corners'
+      corners24.CornerRadius = UDim.new(0, 4)
+      corners24.Parent       = notification
+
+local content2                  = Instance.new('Frame')
+      content2.Name             = 'content'
+      content2.Position         = UDim2.new(0.5, 0, 0.607143, 0)
+      content2.Size             = UDim2.new(0, 129, 0, 32)
+      content2.BackgroundColor3 = Color3.new(0.164706, 0.164706, 0.164706)
+      content2.BorderSizePixel  = 0
+      content2.BorderColor3     = Color3.new(0, 0, 0)
+      content2.AnchorPoint      = Vector2.new(0.5, 0.5)
+      content2.Parent           = notification
+
+local corners25              = Instance.new('UICorner')
+      corners25.Name         = 'corners'
+      corners25.CornerRadius = UDim.new(0, 4)
+      corners25.Parent       = content2
+
+local content3                        = Instance.new('TextLabel')
+      content3.Name                   = 'content'
+      content3.Position               = UDim2.new(0.5, 0, 0.5, 0)
+      content3.Size                   = UDim2.new(0, 122, 0, 32)
+      content3.BackgroundColor3       = Color3.new(0.164706, 0.164706, 0.164706)
+      content3.BackgroundTransparency = 1
+      content3.BorderSizePixel        = 0
+      content3.BorderColor3           = Color3.new(0, 0, 0)
+      content3.AnchorPoint            = Vector2.new(0.5, 0.5)
+      content3.Transparency           = 1
+      content3.Text                   = '. . .'
+      content3.TextColor3             = Color3.new(1, 1, 1)
+      content3.TextSize               = 14
+      content3.FontFace               = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+      content3.TextScaled             = true
+      content3.TextWrapped            = true
+      content3.Parent                 = content2
+
+local escape2                  = Instance.new('TextButton')
+      escape2.Name             = 'escape'
+      escape2.Position         = UDim2.new(0.866507, 0, 0.0421426, 0)
+      escape2.Size             = UDim2.new(0, 12, 0, 12)
+      escape2.BackgroundColor3 = Color3.new(0.164706, 0.164706, 0.164706)
+      escape2.BorderSizePixel  = 0
+      escape2.BorderColor3     = Color3.new(0, 0, 0)
+      escape2.Text             = 'X'
+      escape2.TextColor3       = Color3.new(1, 0.164706, 0.164706)
+      escape2.FontFace         = Font.new('rbxasset://fonts/families/JosefinSans.json', Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+      escape2.TextWrapped      = true
+      escape2.Parent           = notification
+
+local corners26              = Instance.new('UICorner')
+      corners26.Name         = 'corners'
+      corners26.CornerRadius = UDim.new(0, 111)
+      corners26.Parent       = escape2
+
+local title                        = Instance.new('TextLabel')
+      title.Name                   = 'title'
+      title.Position               = UDim2.new(0.0422535, 0, 0.0714286, 0)
+      title.Size                   = UDim2.new(0, 62, 0, 10)
+      title.BackgroundColor3       = Color3.new(1, 1, 1)
+      title.BackgroundTransparency = 1
+      title.BorderSizePixel        = 0
+      title.BorderColor3           = Color3.new(0, 0, 0)
+      title.Transparency           = 1
+      title.Text                   = 'Notification'
+      title.TextColor3             = Color3.new(1, 1, 1)
+      title.TextSize               = 14
+      title.FontFace               = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+      title.RichText               = true
+      title.Parent                 = notification
 
 
 
--- types
-return seoul, folder, divider, button, query, slider, toggle, dropdown
+
+
+
+-- templates
+return seoul, folder, divider, button, query, slider, toggle, dropdown, notification
