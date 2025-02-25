@@ -87,12 +87,14 @@ settingsFolder:query({
     end
 })
 
--- notify the user
+-- notify the user with a default lifespan of 4.5s
 seoul:notify('Interface loaded!')
 
 -- optionally, you can pass a duration for the notification
 seoul:notify({
-    name = ''
+    msg      = 'Interface loaded!', -- notification's message
+    duration = 3.5                  -- notification's lifespan
+})
 ```
 
 ## **Advanced Usage**  
