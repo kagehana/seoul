@@ -317,13 +317,13 @@ end
     updates the query dynamically with new configuration.
 
     @param new (table) the updated configuration for the query.
-        @field name (string) the new placeholder text for the input field.
+        @field placeholder (string) the new placeholder text for the input field.
         @field call (function) the new callback function triggered when the input is submitted.
 ]=]
 function query:modify(new)
     self:__assign(new)
 
-    if new.name then
+    if new.placeholder then
         self._instance.input.PlaceholderText = new.name
     end
 
@@ -633,7 +633,7 @@ end
     creates a new query (text input) element within the folder.
 
     @param data (table) the configuration for the query.
-        @field name (string) the placeholder text for the input field.
+        @field placeholder (string) the placeholder text for the input field.
         @field call (function) the callback function triggered when the input is submitted.
     @return query the created query instance.
 ]=]
