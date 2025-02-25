@@ -41,10 +41,10 @@ local seoul = lib()
 local window = seoul:window('Hub')
 
 -- add a folder
-local utilities = window:folder('Folder')
+local folder = window:folder('Folder')
 
 -- add a button
-utilities:button({
+folder:button({
     name = 'Button',  -- button's name
     call = function() -- button's callback
         print('Button clicked!')
