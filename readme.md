@@ -18,7 +18,7 @@ Seoul is designed to be **simple yet powerful**, making it the perfect choice fo
 ⚙️ **Dynamic Modification**: Nearly every element is modifiable. \
 🌀 **Animated**: Fluid animations for a polished user experience. \
 🔗 **Method Chaining**: Built-in support for [**method chaining**](https://en.wikipedia.org/wiki/Method_chaining). \
-🛠️ **Actively Maintained**: Regular updates and ongoing development. \
+🛠️ **Actively Maintained**: Regular updates and ongoing development.
 
 ## **Capability**  
 `Seoul` currently allows you to generate these element types:
