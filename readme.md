@@ -144,7 +144,7 @@ window:query({
 Support for method-chaining on **ALL** elements is planned.
 
 ## **Connect** 
-- **Direct Contact**: `@asfdajshf` on [**Discord**](https://discord.com/)
+- **Direct Contact**: `@zbzbzbzbzbzbzbzbzb` on [**Discord**](https://discord.com/)
 - **GitHub Issues**: Report any bugs or desired features.  
 
 ## **License**  
