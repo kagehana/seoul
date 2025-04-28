@@ -13,13 +13,6 @@ Refer to the [**License**](https://github.com/kagehana/seoul/blob/main/readme.md
 ## **Why Seoul?**
 Seoul is designed to be **simple yet powerful**, making it the perfect choice for both beginners and advanced users. Whether you're building a small project or a complex application, Seoul has the capability you need to create a modern, functional UI.
 
-### Need to know more?  
-🎨 **Aesthetic Design**: A clean, neutral color palette that's easy on the eyes. \
-⚙️ **Dynamic Modification**: Nearly every element is modifiable. \
-🌀 **Animated**: Fluid animations for a polished user experience. \
-🔗 **Method Chaining**: Built-in support for [**method chaining**](https://en.wikipedia.org/wiki/Method_chaining). \
-🛠️ **Actively Maintained**: Regular updates and ongoing development.
-
 ## **Capability**  
 `Seoul` currently allows you to generate these element types:
 * One window
