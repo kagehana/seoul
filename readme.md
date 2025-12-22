@@ -27,8 +27,7 @@ Seoul is designed to be **simple yet powerful**, making it the perfect choice fo
 ## **Quick Start**
 ```lua
 -- initialize the library
-local lib   = loadstring(game:HttpGet('https://github.com/kagehana/seoul/blob/main/seoul.lua?raw=true'))()
-local seoul = lib()
+local seoul = loadstring(game:HttpGet('https://github.com/kagehana/seoul/blob/main/seoul.lua?raw=true'))()()
 
 -- create a window
 local window = seoul:window('Hub')
