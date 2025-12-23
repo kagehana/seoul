@@ -820,7 +820,7 @@ function seoul:notify(data)
 
                                                                                                                                 print(self._instance.Name)
     notif.content.content.Text = msg
-    notif.Parent               = self._instance.ui.notifications
+    notif.Parent               = self._instance.notifications
 
     if #self._notifs >= 4 then
        (table.remove(self._notifs, 1)):Destroy()
