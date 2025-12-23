@@ -165,7 +165,7 @@ function window:__new(core, trademark)
         local winPos = self._ui.Position
         local winSize = self._ui.Size
         
-        core._instance.notifications.Position = UDim2.new(
+        core.notifications.Position = UDim2.new(
             winPos.X.Scale, 
             winPos.X.Offset + winSize.X.Offset + 10,
             winPos.Y.Scale,
