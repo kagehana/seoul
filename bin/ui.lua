@@ -746,13 +746,21 @@ local title                        = Instance.new('TextLabel')
       title.Parent                 = notification
 
 
-notification.Size = UDim2.new(0, 200, 0, 70)
+notification.Size = UDim2.new(0, 142, 0, 56)
 
-content2.Size = UDim2.new(0, 176, 0, 46)
-content2.Position = UDim2.new(0, 12, 0, 12)
+content2.Size = UDim2.new(0, 129, 0, 32)
+content2.Position = UDim2.new(0.5, 0, 0.607143, 0)
+content2.AnchorPoint = Vector2.new(0.5, 0.5)
 
-content3.Size = UDim2.new(1, -12, 1, -12)
-content3.Position = UDim2.new(0, 6, 0, 6)
+content3.Size = UDim2.new(0, 122, 0, 32)
+content3.Position = UDim2.new(0.5, 0, 0.5, 0)
+content3.AnchorPoint = Vector2.new(0.5, 0.5)
+
+title.Position = UDim2.new(0.0422535, 0, 0.0714286, 0)
+title.Size = UDim2.new(0, 62, 0, 10)
+
+escape2.Position = UDim2.new(0.866507, 0, 0.0714286, 0)
+escape2.Size = UDim2.new(0, 12, 0, 12)
 
 
 
