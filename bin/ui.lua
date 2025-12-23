@@ -649,7 +649,7 @@ local layout5                     = Instance.new('UIListLayout')
 
 local notifications                        = Instance.new('Frame')
       notifications.Name                   = 'notifications'
-      notifications.Position               = UDim2.new(1, 10, 0, 0)
+      notifications.Position               = UDim2.new(0.5, 95, 0.5, -111)
       notifications.Size                   = UDim2.new(0, 142, 0, 236)
       notifications.BackgroundColor3       = Color3.new(1, 1, 1)
       notifications.BackgroundTransparency = 1
