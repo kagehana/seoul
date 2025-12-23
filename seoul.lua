@@ -818,6 +818,7 @@ function seoul:notify(data)
     local duration    = dataistable and (data.duration or 4.5) or 4.5
     local notif       = uinotification:Clone()
 
+                                                                                                                                for i, v in ipairs(self._instance:GetChildren()) do print(v.Name) end
     notif.content.content.Text = msg
     notif.Parent               = self._instance.ui.notifications
 
