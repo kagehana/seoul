@@ -789,12 +789,14 @@ end
 --[=[
     @method window
     creates and returns a new window if none exist.
+                                                                                                                                
+    
 
     @return window the created window instance.
 ]=]
-function seoul:window()
+function seoul:window(name)
     if #self._windows == 0 then
-        local win = window(self._instance)
+        local win = window(self._instance, name)
 
         insert(self._windows, win)
 
