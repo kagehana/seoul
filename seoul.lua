@@ -160,13 +160,12 @@ function window:__new(core, trademark)
         self._folders.CanvasSize = UDim2.fromOffset(0, self._folders.layout.AbsoluteContentSize.Y + 42)
     end)
 
-    local window = seoul:window()
 
     local function updateNotificationPosition()
-        local winPos = window._ui.Position
-        local winSize = window._ui.Size
+        local winPos = self._ui.Position
+        local winSize = self._ui.Size
         
-        seoul._instance.notifications.Position = UDim2.new(
+        core._instance.notifications.Position = UDim2.new(
             winPos.X.Scale, 
             winPos.X.Offset + winSize.X.Offset + 10,
             winPos.Y.Scale,
@@ -176,7 +175,7 @@ function window:__new(core, trademark)
 
     updateNotificationPosition()
     
-    window._ui:GetPropertyChangedSignal('Position'):Connect(updateNotificationPosition)
+    self._ui:GetPropertyChangedSignal('Position'):Connect(updateNotificationPosition)
 end
 
 --[=[
