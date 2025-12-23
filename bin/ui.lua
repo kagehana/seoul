@@ -746,7 +746,10 @@ local title                        = Instance.new('TextLabel')
       title.Parent                 = notification
 
 
-
+notifications.Size = UDim2.new(0, 200, 0, 320)
+notification.Size  = UDim2.new(0, 200, 0, 70)
+content2.Size      = UDim2.new(0, 180, 0, 44)
+content3.Size      = UDim2.new(0, 170, 0, 44)
 
 
 
