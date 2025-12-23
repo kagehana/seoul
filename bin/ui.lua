@@ -649,14 +649,14 @@ local layout5                     = Instance.new('UIListLayout')
 
 local notifications                        = Instance.new('Frame')
       notifications.Name                   = 'notifications'
-      notifications.Position               = UDim2.new(1, -20, 0.5, 0)
+      notifications.Position               = UDim2.new(1, 10, 0, 0)
       notifications.Size                   = UDim2.new(0, 142, 0, 236)
       notifications.BackgroundColor3       = Color3.new(1, 1, 1)
       notifications.BackgroundTransparency = 1
       notifications.BorderSizePixel        = 0
       notifications.BorderColor3           = Color3.new(0, 0, 0)
       notifications.ClipsDescendants       = true
-      notifications.Parent                 = seoul
+      notifications.Parent                 = ui
 
 local layout6                     = Instance.new('UIListLayout')
       layout6.Name                = 'layout'
