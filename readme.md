@@ -136,7 +136,6 @@ window:query({
 Support for method-chaining on **ALL** elements is planned.
 
 ## **Connect** 
-- **Direct Contact**: `@replicant_f` on [**Discord**](https://discord.com/)
 - **GitHub Issues**: Report any bugs or desired features.  
 
 ## **License**  
