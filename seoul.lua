@@ -416,7 +416,7 @@ function dropdown:modify(new)
     end
 
     if new.elements then
-        for _, child in ipairs(self._instance.elements:GetChildren()) do
+        for _, child in pairs(self._instance.elements:GetChildren()) do
             if child:IsA('TextButton') then
                 child:Destroy()
             end
