@@ -432,9 +432,9 @@ function dropdown:modify(new)
 
             nel.Parent = self._instance.elements
         end
-    end
 
-    self._instance.elements.CanvasSize = UDim2.new(0, 0, 0, self._instance.elements.layout.AbsoluteContentSize.Y)
+        self._instance.elements.CanvasSize = UDim2.new(0, 0, 0, self._instance.elements.layout.AbsoluteContentSize.Y)
+    end
 
     return self
 end
@@ -738,6 +738,7 @@ function folder:dropdown(data)
         local nel = ddel:Clone()
 
         nel.Text = v
+
         nel.MouseButton1Click:Connect(function()
             inst._call(v)
         end)
