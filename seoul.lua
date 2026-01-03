@@ -730,7 +730,7 @@ function folder:dropdown(data)
     local nd   = uidropdown:Clone()
     local inst = dropdown(nd, data)
 
-    nd.elements.ChildAdded:Connect(function()
+    nd.elements.layout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(function()
         nd.elements.CanvasSize = UDim2.new(0, 0, 0, nd.elements.layout.AbsoluteContentSize.Y)
     end)
 
