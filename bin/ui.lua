@@ -572,6 +572,7 @@ local details7                        = Instance.new('TextLabel')
       details7.TextScaled             = true
       details7.FontFace               = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
       details7.TextWrapped            = true
+      details7.RichText               = true
       details7.Parent                 = divider
 
 local palette                  = Instance.new('Frame')
