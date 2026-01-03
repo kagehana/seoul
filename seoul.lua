@@ -734,18 +734,6 @@ function folder:dropdown(data)
         nd.elements.CanvasSize = UDim2.new(0, 0, 0, nd.elements.layout.AbsoluteContentSize.Y)
     end)
 
-    for _, v in ipairs(inst._elements) do
-        local nel = ddel:Clone()
-
-        nel.Text = v
-
-        nel.MouseButton1Click:Connect(function()
-            inst._call(v)
-        end)
-
-        nel.Parent = nd.elements
-    end
-
     nd.details.trigger.MouseButton1Click:Connect(function()
         local size = 67
 
