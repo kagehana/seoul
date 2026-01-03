@@ -421,6 +421,7 @@ local button                  = Instance.new('TextButton')
       button.BorderSizePixel  = 0
       button.BorderColor3     = Color3.new(0, 0, 0)
       button.Text             = ''
+      button.TextScaled       = true
       button.TextColor3       = Color3.new(0, 0, 0)
       button.TextSize         = 14
       button.FontFace         = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
