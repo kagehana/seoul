@@ -138,10 +138,6 @@ uidropdown.elements.element:Destroy()
 function window:__new(core, trademark)
     local win = core.ui
 
-    if protect_gui then
-        protect_gui(win)
-    end
-
     win.topbar.trademark.Text = trademark and tostring(trademark) or 'Seoul'
 
     win.topbar.minimize.MouseButton1Click:Connect(function()
@@ -772,7 +768,7 @@ function seoul:__new()
 
     getgenv().seoul = self._instance
 
-    self._instance.Parent = client:WaitForChild('PlayerGui')
+    self._instance.Parent = (gethui and gethui() or game:GetService('CoreGui'))
 end
 
 --[=[
