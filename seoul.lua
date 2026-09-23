@@ -2434,10 +2434,12 @@ function library:window(o)
         Size     = UDim2.new(1, -28, 0, 20),
     })
     win._status = new('Frame', { Position = UDim2.fromOffset(14, 35), Size = UDim2.new(1, -28, 0, 14), Visible = false }, head)
+    -- whole pixels, and one below the line's centre: centred on 14 it landed
+    -- at 4.5 and rounded up, and jura sits low in its line box, so this is
+    -- the middle of the lowercase letters.
     win._dot    = new('Frame', {
         BackgroundTransparency = 0,
-        AnchorPoint            = Vector2.new(0, 0.5),
-        Position               = UDim2.fromScale(0, 0.5),
+        Position               = UDim2.fromOffset(0, 6),
         Size                   = UDim2.fromOffset(5, 5),
     }, win._status)
     corner(win._dot, 3)
