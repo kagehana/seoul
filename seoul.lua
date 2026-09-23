@@ -348,14 +348,30 @@ local function unbase64(s)
 end
 
 local assets = {}
+local custom = {}
 
 --[=[
     resolves an icon to a content id, writing its png on first use.
 
-    @param name (string) the icon's name.
+    @param name (string | number) a baked or added icon's name, a content id
+    (`rbxassetid://…`, `rbxthumb://…`, `https://…`) used as is, or a bare
+    asset id.
     @return string? nil when the icon cannot be loaded.
 ]=]
 local function iconasset(name)
+    -- an uploaded image: nothing to write, so it works without getcustomasset
+    if type(name) == 'number' or (type(name) == 'string' and string.match(name, '^%d+$')) then
+        return 'rbxassetid://' .. name
+    end
+
+    if type(name) ~= 'string' then
+        return nil
+    end
+
+    if string.match(name, '^%a+://') then
+        return name
+    end
+
     if assets[name] ~= nil then
         return assets[name] or nil
     end
@@ -368,17 +384,20 @@ local function iconasset(name)
     end
 
     local ok, id = pcall(function()
-        local data = assert(icons[name], 'no icon named ' .. tostring(name))
+        local data = assert(icons[name], 'no icon named ' .. name)
 
-        -- the length stamps the version: a re-baked icon gets a new file
-        local path = 'library-icons/' .. name .. '-' .. #data .. '.png'
+        -- the length stamps the version: a re-baked icon gets a new file. an
+        -- added one is rewritten on its first use each session, since a
+        -- project can change its png without changing its length.
+        local path = 'library-icons/' .. (custom[name] and 'custom-' or '')
+            .. string.gsub(name, '[^%w%-_]', '_') .. '-' .. #data .. '.png'
 
-        if not isfile(path) then
+        if custom[name] or not isfile(path) then
             if not isfolder('library-icons') then
                 makefolder('library-icons')
             end
 
-            writefile(path, unbase64(data))
+            writefile(path, string.sub(data, 1, 4) == '\137PNG' and data or unbase64(data))
         end
 
         return getcustomasset(path)
@@ -389,6 +408,23 @@ local function iconasset(name)
     return ok and id or nil
 end
 library.icon = iconasset
+
+--[=[
+    adds an icon, or replaces a baked one, under a name any `icon` option can
+    use. draw it white on transparent: elements tint icons through
+    ImageColor3. elements built before the call keep what they had.
+
+    @param name (string) the name to use it by.
+    @param png (string) the png, as base64 or as raw bytes.
+]=]
+function library.addicon(name, png)
+    assert(type(name) == 'string' and name ~= '', 'addicon: name must be a string')
+    assert(type(png) == 'string' and png ~= '', 'addicon: png must be a string')
+
+    icons[name]  = png
+    custom[name] = true
+    assets[name] = nil
+end
 
 local function icon(parent, name, size, colour, props)
     local i = new('ImageLabel', {
