@@ -1,4 +1,4 @@
-# library.lua
+# seoul
 
 A settings UI for Roblox scripts: tabs, groups of rows, switches with keys and
 sliders built in, dropdowns with search and ordered multi-pick, a status line,
