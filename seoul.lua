@@ -2472,7 +2472,11 @@ function library:window(o)
         end
 
         scale.Scale, self._noteScale.Scale = s, s
-        main.Position = UDim2.new(0.5, 0, 0.5, -floor(h * s / 2))
+
+        -- whole pixels: a 0.5 scale on an odd viewport put the window on a
+        -- half pixel, and each child then rounded its own way - the status
+        -- dot sat a row off its text.
+        main.Position = UDim2.fromOffset(floor((vp.X - w * s) / 2) + w * s / 2, floor((vp.Y - h * s) / 2))
     end
 
     fit()
