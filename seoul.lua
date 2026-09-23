@@ -360,6 +360,13 @@ local function iconasset(name)
         return assets[name] or nil
     end
 
+    -- nothing to load the file with: do not leave pngs in the workspace
+    if type(getcustomasset) ~= 'function' then
+        assets[name] = false
+
+        return nil
+    end
+
     local ok, id = pcall(function()
         local data = assert(icons[name], 'no icon named ' .. tostring(name))
 
@@ -1213,6 +1220,8 @@ end
         @field slider (table?) { min, max, step, default, prefix, suffix, live },
             drawn as a ruler under the row.
         @field call (function) function(on, number).
+        @field changed (function?) function(key), runs when the key is
+            rebound, so a script keeping its own config can save it.
         @field flag (string?) the config key.
     @return element
 ]=]
@@ -1297,9 +1306,13 @@ function group:toggle(o)
         return self
     end
 
-    function el:setKey(k)
+    function el:setKey(k, silent)
         self.key = k
         changed(true)
+
+        if not silent then
+            safe(o.changed, k)
+        end
 
         return self
     end
@@ -2503,6 +2516,16 @@ function window:toggle(v)
     self._main.Visible = v
 
     return self
+end
+
+--[=[
+    @method isOpen
+    whether the window is showing, as opposed to hidden by its key or the x.
+
+    @return boolean
+]=]
+function window:isOpen()
+    return self._main.Visible
 end
 
 --[=[
